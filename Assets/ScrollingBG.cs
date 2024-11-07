@@ -10,16 +10,16 @@ public class ScrollingBG : MonoBehaviour
 
     private float offsetX = 0f;
 
+    void Start()
+    {
+        offsetX = bgMaterial.mainTextureOffset.x;
+    }
     void Update()
     {
         if (GameManager.Instance.GameState != GameState.Playing)
             return;
-            
+        
         offsetX += scrollSpeed * Time.deltaTime;
-        if (offsetX >= 1)
-        {
-            offsetX = 0;
-        }
         bgMaterial.mainTextureOffset = new Vector2(offsetX, 0);
     }
 }
